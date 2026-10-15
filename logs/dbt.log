@@ -1,0 +1,139 @@
+[0m13:57:37.016048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002201E6767B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022020C67ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022020C679D0>]}
+
+
+============================== 13:57:37.021671 | d29b7678-5bf6-43fd-babc-7d9a8b7fd98b ==============================
+[0m13:57:37.021671 [info ] [MainThread]: Running with dbt=1.12.4
+[0m13:57:37.022378 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\pblie\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt init shopflow', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m13:57:37.046996 [debug] [MainThread]: Starter project path: C:\Users\pblie\OneDrive\Documentos\Data_Engineering_WorkSpace\e-commerce_data_platform\.venv\Lib\site-packages\dbt\include\starter_project
+[0m13:57:37.070812 [info ] [MainThread]: Setting up your profile.
+[0m13:58:44.869410 [info ] [MainThread]: Profile shopflow written to C:\Users\pblie\.dbt\profiles.yml using target's profile_template.yml and your supplied values.
+[0m13:58:44.871510 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m13:58:44.872103 [info ] [MainThread]: dbt version: 1.12.4
+[0m13:58:44.872475 [info ] [MainThread]: python version: 3.13.0
+[0m13:58:44.872930 [info ] [MainThread]: python path: C:\Users\pblie\OneDrive\Documentos\Data_Engineering_WorkSpace\e-commerce_data_platform\.venv\Scripts\python.exe
+[0m13:58:44.873329 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m13:58:44.912485 [info ] [MainThread]: Using profiles dir at C:\Users\pblie\.dbt
+[0m13:58:44.913124 [info ] [MainThread]: Using profiles.yml file at C:\Users\pblie\.dbt\profiles.yml
+[0m13:58:44.913755 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\pblie\OneDrive\Documentos\Data_Engineering_WorkSpace\e-commerce_data_platform\shopflow\dbt_project.yml
+[0m13:58:44.914864 [info ] [MainThread]: adapter type: postgres
+[0m13:58:44.915301 [info ] [MainThread]: adapter version: 1.11.0
+[0m13:58:45.007646 [info ] [MainThread]: Configuration:
+[0m13:58:45.008263 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m13:58:45.008709 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m13:58:45.009111 [info ] [MainThread]: Required dependencies:
+[0m13:58:45.009529 [debug] [MainThread]: Executing "git --help"
+[0m13:58:45.045531 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m13:58:45.046002 [debug] [MainThread]: STDERR: "b''"
+[0m13:58:45.046267 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m13:58:45.046700 [info ] [MainThread]: Connection:
+[0m13:58:45.047054 [info ] [MainThread]:   host: hostname
+[0m13:58:45.047342 [info ] [MainThread]:   port: 1
+[0m13:58:45.047624 [info ] [MainThread]:   user: postgres
+[0m13:58:45.047907 [info ] [MainThread]:   database: shopflow
+[0m13:58:45.048280 [info ] [MainThread]:   schema: public
+[0m13:58:45.048678 [info ] [MainThread]:   connect_timeout: 10
+[0m13:58:45.048989 [info ] [MainThread]:   role: None
+[0m13:58:45.049348 [info ] [MainThread]:   search_path: None
+[0m13:58:45.049728 [info ] [MainThread]:   keepalives_idle: 0
+[0m13:58:45.050034 [info ] [MainThread]:   sslmode: None
+[0m13:58:45.050317 [info ] [MainThread]:   sslcert: None
+[0m13:58:45.050636 [info ] [MainThread]:   sslkey: None
+[0m13:58:45.050976 [info ] [MainThread]:   sslrootcert: None
+[0m13:58:45.051286 [info ] [MainThread]:   application_name: dbt
+[0m13:58:45.051579 [info ] [MainThread]:   autocommit: False
+[0m13:58:45.051988 [info ] [MainThread]:   retries: 1
+[0m13:58:45.052762 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m13:58:45.298423 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m13:58:47.386967 [debug] [MainThread]: Using postgres connection "debug"
+[0m13:58:47.387355 [debug] [MainThread]: On debug: select 1 as id
+[0m13:58:47.387635 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:58:50.078506 [debug] [MainThread]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "hostname" to address: Name or service not known
+
+[0m13:58:52.355305 [debug] [MainThread]: Postgres adapter: Error running SQL: select 1 as id
+[0m13:58:52.355761 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m13:58:52.356110 [debug] [MainThread]: On debug: No close available on handle
+[0m13:58:52.356408 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m13:58:52.356827 [info ] [MainThread]: [31m1 check failed:[0m
+[0m13:58:52.357151 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  could not translate host name "hostname" to address: Name or service not known
+  
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m13:58:52.357483 [info ] [MainThread]: Your new dbt project "shopflow" was created!
+Initialized new project in C:\Users\pblie\OneDrive\Documentos\Data_Engineering_WorkSpace\e-commerce_data_platform\shopflow\shopflow
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m13:58:52.357965 [info ] [MainThread]: [31mYour profile may need adjustments. You can find the logs of `dbt debug` above[0m
+[0m13:58:52.358711 [debug] [MainThread]: Command `dbt init` succeeded at 13:58:52.358600 after 75.50 seconds
+[0m13:58:52.359004 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m13:58:52.359278 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022020D0F6F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022020B1E9F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022020EDE9C0>]}
+[0m13:58:52.359602 [debug] [MainThread]: Flushing usage events
+[0m13:58:53.150780 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:43:35.242858 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CD83BCEA50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CD8621BED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CD8621B9D0>]}
+
+
+============================== 11:43:35.250302 | 14005e96-be71-4436-90ce-401bc0c8487f ==============================
+[0m11:43:35.250302 [info ] [MainThread]: Running with dbt=1.12.4
+[0m11:43:35.251027 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\pblie\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'invocation_command': 'dbt run --select stg_products', 'log_path': 'logs'}
+[0m11:43:35.251564 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\pblie\OneDrive\Documentos\Data_Engineering_WorkSpace\e-commerce_data_platform\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m11:43:35.252535 [debug] [MainThread]: Command `dbt run` failed at 11:43:35.252382 after 0.21 seconds
+[0m11:43:35.252900 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CD8627C9D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CD861DB890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CD8624B680>]}
+[0m11:43:35.253239 [debug] [MainThread]: Flushing usage events
+[0m11:43:36.053947 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:45:53.510417 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029AEC08EA50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029AEE6EBED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029AEE6EB9D0>]}
+
+
+============================== 12:45:53.522105 | ab9cf1da-02ad-435b-b9eb-1bce800eaf41 ==============================
+[0m12:45:53.522105 [info ] [MainThread]: Running with dbt=1.12.4
+[0m12:45:53.522723 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\pblie\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt run --select int_order_items_enriched', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'logs'}
+[0m12:45:53.523214 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\pblie\OneDrive\Documentos\Data_Engineering_WorkSpace\e-commerce_data_platform\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:45:53.524088 [debug] [MainThread]: Command `dbt run` failed at 12:45:53.523928 after 0.17 seconds
+[0m12:45:53.524494 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029AEE74C9D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029AEE6AB890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029AEE71B680>]}
+[0m12:45:53.524841 [debug] [MainThread]: Flushing usage events
+[0m12:45:54.392141 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:46:37.788945 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027F6FF8EA50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027F725EBED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027F725EB9D0>]}
+
+
+============================== 12:46:37.793843 | 1c446f7c-e609-49a0-90f9-3887849527d9 ==============================
+[0m12:46:37.793843 [info ] [MainThread]: Running with dbt=1.12.4
+[0m12:46:37.794441 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\pblie\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run --select int_order_items_enriched', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m12:46:37.794957 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\pblie\OneDrive\Documentos\Data_Engineering_WorkSpace\e-commerce_data_platform\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:46:37.795781 [debug] [MainThread]: Command `dbt run` failed at 12:46:37.795660 after 0.14 seconds
+[0m12:46:37.796105 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027F7264C9D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027F725AB890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027F7261F680>]}
+[0m12:46:37.796495 [debug] [MainThread]: Flushing usage events
+[0m12:46:38.593126 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -1,0 +1,4 @@
+psycopg[binary]
+pytest
+requests
+python-dotenv
