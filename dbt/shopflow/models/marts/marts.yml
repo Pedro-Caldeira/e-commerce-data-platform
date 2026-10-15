@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Fact table with one row per order, enriched with customer, item and payment metrics."
+
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+
+      - name: order_total
+        data_tests:
+          - not_null
+
+      - name: total_units
+        data_tests:
+          - not_null
+
+      - name: items_total
+        data_tests:
+          - not_null
+
+      - name: payments_total
+        data_tests:
+          - not_null
