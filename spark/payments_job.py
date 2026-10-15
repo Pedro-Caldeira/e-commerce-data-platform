@@ -1,7 +1,7 @@
 import pyspark
+import psycopg2
 import os
 from dotenv import load_dotenv
-from spark.orders_job  import df_orders
 from pyspark.sql.functions import col, lower, to_timestamp, trim, explode, sum as spark_sum
 from pyspark.sql.types import (
     StructType,
@@ -78,27 +78,42 @@ df_payments = df_payments.withColumn("payment_date", to_timestamp("payment_date"
 df_payments = df_payments.withColumn("payment_method", lower(trim("payment_method"))).withColumn("status", lower(trim("status")))
 
 
-df_payment_validation = df_payments.join(df_orders, on="order_id", how="left").withColumn("amount_difference", col("amount") - col("total_amount"))
+print("Configuração PostgreSQL:")
+print("Host:", os.getenv("POSTGRES_HOST"))
+print("Porta:", os.getenv("POSTGRES_PORT"))
+print("Base de dados:", os.getenv("POSTGRES_DB"))
+print("Utilizador:", os.getenv("POSTGRES_USER"))
 
-df_payment_validation = (
-    df_payment_validation
-    .filter(
-        col("amount_difference") != 0
-    )
-)
 
-df_payment_validation.printSchema()
-df_payment_validation.show(truncate=False)
+print("Número de pagamentos escritos:", df_payments.count())
+df_payments.show(truncate=False)
+
+print("A escrever na tabela payments...")
 
 df_payments.write.jdbc(
     url=postgres_url,
-    table="payments",
-    mode="append",
+    table="payments_staging",
+    mode="overwrite",
     properties=postgres_properties
-) 
+)
 
-df_payments.printSchema()
-df_payments.show(truncate=False)
+print("Escrita JDBC concluída com sucesso.")
+
+conn = psycopg2.connect(
+    host=os.getenv("POSTGRES_HOST"),
+    port=os.getenv("POSTGRES_PORT"),
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD")
+)
+cursor = conn.cursor()
+file = open("e-commerce_data_platform/sql/payments_staging_to_payments.sql", "r", encoding="utf-8")
+sql = file.read()
+cursor.execute(sql)
+
+conn.commit()
+cursor.close()
+conn.close()
 spark.stop()
 
 

@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from pyspark.sql import SparkSession
+import psycopg2
 from pyspark.sql.functions import lower, to_timestamp, trim
 import psycopg2
 
@@ -81,10 +82,24 @@ print("JDBC URL:", postgres_url)
 
 df_customers.write.jdbc(
     url=postgres_url,
-    table="customers",
-    mode="append",
+    table="customers_staging",
+    mode="overwrite",
     properties=postgres_properties
 )
 
+conn = psycopg2.connect(
+    host=os.getenv("POSTGRES_HOST"),
+    port=os.getenv("POSTGRES_PORT"),
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD")
+)
+cursor = conn.cursor()
+file = open("e-commerce_data_platform/sql/customers_upsert.sql", "r", encoding="utf-8")
+sql = file.read()
+cursor.execute(sql)
 
+conn.commit()
+cursor.close()
+conn.close()
 spark.stop()
