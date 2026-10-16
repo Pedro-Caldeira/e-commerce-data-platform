@@ -34,3 +34,38 @@ models:
       - name: payments_total
         data_tests:
           - not_null
+  - name: fct_products
+    description: "Fact table with one row per product, enriched with order and payment metrics."
+
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        data_tests:
+          - not_null
+
+      - name : category
+        data_tests:
+          - not_null
+      - name : current_price
+        data_tests:
+          - not_null
+      - name : current_stock
+        data_tests:
+          - not_null
+
+      - name: number_of_orders
+        data_tests:
+          - not_null
+
+      - name: units_sold
+        data_tests:
+          - not_null
+
+      - name: revenue
+        data_tests:
+          - not_null
