@@ -1,0 +1,17 @@
+
+services:
+  airflow:
+    image: apache/airflow:3.1.0
+    container_name: shopflow-airflow
+    command: standalone
+    ports:
+      - "8080:8080"
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      _PIP_ADDITIONAL_REQUIREMENTS: "apache-airflow-providers-ssh"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ${USERPROFILE}/.ssh/shopflow_airflow:/home/airflow/.ssh/shopflow_airflow:ro
+    restart: unless-stopped
