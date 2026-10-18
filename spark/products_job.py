@@ -97,7 +97,7 @@ conn = psycopg2.connect(
     password=os.getenv("POSTGRES_PASSWORD")
 )
 cursor = conn.cursor()
-file = open("e-commerce_data_platform/sql/products_upsert.sql", "r", encoding="utf-8")
+file = open("sql/upsert_products.sql", "r", encoding="utf-8")
 sql = file.read()
 cursor.execute(sql)
 

@@ -7,7 +7,7 @@ RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 
 def extract_customers() -> list[dict]:
     return extract_cycle(
-        limit=2,
+        limit=5,
         offset=0,
         url=f"{BASE_URL}/customers"
     )
@@ -15,7 +15,7 @@ def extract_customers() -> list[dict]:
 
 def extract_products() -> list[dict]:
     return extract_cycle(
-        limit=2,
+        limit=5,
         offset=0,
         url=f"{BASE_URL}/products"
     )
@@ -23,7 +23,7 @@ def extract_products() -> list[dict]:
 
 def extract_orders() -> list[dict]:
     return extract_cycle(
-        limit=2,
+        limit=5,
         offset=0,
         url=f"{BASE_URL}/orders"
     )
@@ -31,7 +31,7 @@ def extract_orders() -> list[dict]:
 
 def extract_payments() -> list[dict]:
     return extract_cycle(
-        limit=2,
+        limit=5,
         offset=0,
         url=f"{BASE_URL}/payments"
     )
@@ -59,7 +59,7 @@ def request_with_retry(url:str, params:dict, max_entries:int=3, backoff_factor:i
 
 def extract_cycle(
     url: str,
-    limit: int = 2,
+    limit: int = 5,
     offset: int = 0
 ) -> list[dict]:
 

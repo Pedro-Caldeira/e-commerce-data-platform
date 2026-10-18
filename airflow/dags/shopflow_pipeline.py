@@ -22,7 +22,7 @@ JOBS = [
 with DAG(
     dag_id="shopflow_pipeline",
     start_date=pendulum.datetime(2025, 1, 1, tz= "Europe/Lisbon"),
-    schedule="30 18 * * *",
+    schedule="0 18 * * *",
     catchup=False,
     tags=["shopflow", "pipeline"],
 ) as dag:

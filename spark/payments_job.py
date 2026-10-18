@@ -2,7 +2,7 @@ import pyspark
 import psycopg2
 import os
 from dotenv import load_dotenv
-from pyspark.sql.functions import col, lower, to_timestamp, trim, explode, sum as spark_sum
+from pyspark.sql.functions import lower, to_timestamp, trim, sum as spark_sum
 from pyspark.sql.types import (
     StructType,
     StructField,
@@ -107,7 +107,7 @@ conn = psycopg2.connect(
     password=os.getenv("POSTGRES_PASSWORD")
 )
 cursor = conn.cursor()
-file = open("e-commerce_data_platform/sql/payments_staging_to_payments.sql", "r", encoding="utf-8")
+file = open("sql/upsert_payments.sql", "r", encoding="utf-8")
 sql = file.read()
 cursor.execute(sql)
 
