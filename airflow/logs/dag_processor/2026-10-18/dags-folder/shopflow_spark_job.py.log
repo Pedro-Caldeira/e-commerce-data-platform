@@ -1054,3 +1054,10 @@
 {"timestamp":"2026-10-18T19:54:51.967000Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
 {"timestamp":"2026-10-18T19:55:22.760932Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
 {"timestamp":"2026-10-18T19:55:53.529577Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2026-10-18T19:56:24.308414Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2026-10-18T19:56:55.143734Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2026-10-18T19:57:25.963546Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2026-10-18T19:57:56.749458Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2026-10-18T19:58:27.608359Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2026-10-18T19:58:57.762907Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2026-10-18T19:59:27.950188Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/shopflow_spark_job.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}

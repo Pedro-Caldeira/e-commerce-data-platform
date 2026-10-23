@@ -1,156 +1,132 @@
 # E-Commerce Data Platform — ShopFlow
 
-An end-to-end data engineering project that ingests e-commerce data, stores raw data in a data lake, transforms it with PySpark, loads it into PostgreSQL, and builds analytical models with dbt. Apache Airflow orchestrates the pipeline from ingestion to analytics.
+An end-to-end data engineering project that ingests e-commerce data, stores raw data in a data lake, transforms it, and prepares analytical datasets for reporting and business intelligence.
 
 ## Architecture
 
-```text
-FastAPI
-   ↓
-Python Ingestion
-   ↓
-MinIO (Raw Data Lake)
-   ↓
-PySpark Transformations
-   ↓
-PostgreSQL
-   ↓
-dbt (Data Modeling & Testing)
-   ↓
-Analytics with Metabase
-```
+FastAPI → Python Ingestion → MinIO → PySpark → PostgreSQL → dbt → Metabase
 
-**Orchestration:** Apache Airflow coordinates ingestion, Spark jobs, and dbt execution through a scheduled DAG. Airflow runs in Docker and connects to the Windows host through SSH to execute the Python and Spark jobs.
+**Orchestration:** Apache Airflow
+**Infrastructure:** Docker Compose
 
 ## Tech Stack
 
-- **Python** — Ingestion, data processing, and supporting modules
-- **FastAPI** — E-commerce API
-- **MinIO** — S3-compatible object storage for raw data
-- **PySpark** — Data transformation jobs
+- **Python & FastAPI** — API and data ingestion
+- **MinIO** — S3-compatible raw data lake
+- **PySpark** — Data transformation
 - **PostgreSQL** — Relational database and analytical storage
-- **dbt** — SQL transformations, data modeling, and data quality tests
-- **Apache Airflow** — Workflow orchestration and scheduling
-- **Metabase** — Business intelligence and data visualization
-- **Docker Compose** — Local infrastructure and services
-- **Git & GitHub** — Version control and project collaboration
+- **dbt** — SQL transformations, analytical marts and data quality tests
+- **Apache Airflow** — Workflow orchestration
+- **Metabase** — Data exploration and BI dashboards
+- **Docker Compose** — Local infrastructure
+- **PowerShell** — Local development and database administration
+- **Git & GitHub** — Version control
 
 ## Project Structure
 
 ```text
 e-commerce_data_platform/
-├── api/                  # FastAPI application
+├── api/                  # API application
 ├── src/                  # Ingestion and supporting Python modules
-├── sql/                  # SQL schemas and scripts
-├── spark/                # PySpark transformation jobs
+├── sql/                  # Database schema and SQL scripts
+├── spark/                # Spark transformation jobs
 ├── dbt/
-│   └── shopflow/         # dbt project and data models
-├── airflow/
-│   ├── dags/             # Airflow DAG definitions
-│   ├── logs/             # Airflow logs
-│   ├── plugins/          # Airflow plugins
-│   └── docker-compose.yml
+│   └── shopflow/         # dbt models, marts and tests
+├── airflow/              # Workflow orchestration
 ├── tests/                # Automated tests
-├── docker-compose.yml    # Main infrastructure
-├── .env.example          # Environment variable template
+├── docker-compose.yml
+├── .env.example
 └── README.md
 ```
 
-## Pipeline Workflow
+## Data Pipeline
 
-The `shopflow_pipeline` DAG orchestrates the following tasks in sequence:
-
-1. **Data ingestion** — Extracts customers, products, orders, and payments from the API.
-2. **Raw data storage** — Stores ingested JSON data in MinIO.
-3. **Customers transformation** — Runs the customers PySpark job.
-4. **Products transformation** — Runs the products PySpark job.
-5. **Orders transformation** — Runs the orders PySpark job.
-6. **Payments transformation** — Runs the payments PySpark job.
-7. **dbt build** — Builds the configured dbt models and runs their associated tests.
-
-The DAG is configured for scheduled execution. Its schedule and timezone are defined in the DAG configuration.
-
-## Current Progress
-
-- [x] FastAPI application and data ingestion
-- [x] Retry and pagination logic for API extraction
-- [x] Raw data storage in MinIO
-- [x] PostgreSQL schema and data loading
-- [x] PySpark transformation jobs for customers, products, orders, and payments
-- [x] dbt staging models
-- [x] Initial intermediate dbt model
-- [x] Initial dbt data quality tests
-- [x] Apache Airflow deployed with Docker Compose
-- [x] SSH connection from Airflow to the Windows host
-- [x] Integrated ingestion, Spark, and dbt pipeline
-- [x] Successful manual pipeline execution in Airflow
-- [x] Automatic DAG scheduling configured
-- [x] Initial Metabase dashboard
-- [ ] Analytical marts and additional business metrics
-- [ ] Expanded data quality and integration tests
-- [ ] GitHub Actions CI/CD
-- [ ] Production-oriented deployment and secrets management
+1. **Ingestion:** Python and FastAPI handle data ingestion.
+2. **Raw storage:** Raw data is stored in MinIO.
+3. **Transformation:** PySpark processes data for downstream use.
+4. **Database loading:** PostgreSQL stores relational and analytical data.
+5. **Data modelling:** dbt creates staging models, intermediate models and analytical marts, supported by data quality tests.
+6. **Orchestration:** Airflow coordinates pipeline tasks and integrates with the Windows environment via SSH.
+7. **Analytics:** Metabase provides dashboards and business insights based on the analytical datasets.
 
 ## Getting Started
 
 ### Requirements
 
 - Docker Desktop
-- Python and a project virtual environment
-- Java and the dependencies required for local PySpark execution
-- PySpark and its required Hadoop utilities for the Windows environment
+- Python
+- Java and Spark dependencies for local Spark jobs
 - dbt with the PostgreSQL adapter
 - Git
 
-### Configuration
+### Start the infrastructure
 
-1. Clone the repository.
-2. Create and activate a Python virtual environment.
-3. Install the project dependencies.
-4. Create a local `.env` file using `.env.example` as a template.
-5. Configure MinIO and PostgreSQL connection settings.
-6. Configure the dbt profile in `~/.dbt/profiles.yml`.
-7. Configure the Airflow SSH connection to the Windows host.
-8. Start the main services using Docker Compose.
-9. Start Airflow using `airflow/docker-compose.yml`.
-
-**Important:** The project currently uses a local development setup. Paths, credentials, ports, and SSH settings may need to be adapted to your machine. Do not commit `.env`, private SSH keys, or files containing real credentials.
-
-### Running the Pipeline
-
-The pipeline is managed through the Airflow web interface:
-
-- Airflow: `http://localhost:8080`
-- Metabase: `http://localhost:3000`
-- MinIO Console: `http://localhost:9001`
-
-Run the `shopflow_pipeline` DAG manually for testing or let its configured schedule trigger executions automatically. Ensure Docker, Airflow, PostgreSQL, MinIO, and the Windows SSH service are available when the DAG runs.
-
-### Running dbt Separately
-
-From the repository root, with the project virtual environment configured:
+From the project root:
 
 ```powershell
-.\.venv\Scripts\dbt.exe debug --project-dir ".\dbt\shopflow"
-.\.venv\Scripts\dbt.exe build --project-dir ".\dbt\shopflow"
+docker compose up -d
 ```
 
-The `debug` command checks the dbt project and connection configuration. The `build` command runs the selected models and their configured tests.
+Check running containers:
+
+```powershell
+docker ps
+```
+
+### Initialise the PostgreSQL schema
+
+From the project root, execute the SQL schema through PowerShell:
+
+```powershell
+Get-Content .\sql\schema.sql | docker exec -i shopflow-postgres psql -U shopflow -d shopflow
+```
+
+The `-i` option keeps standard input open so the SQL file can be piped into the container. The `-t` option allocates a pseudo-terminal and is unnecessary for this non-interactive operation.
+
+For an interactive PostgreSQL session:
+
+```powershell
+docker exec -it shopflow-postgres psql -U shopflow -d shopflow
+```
+
+These commands assume the container is named `shopflow-postgres`, the database is `shopflow`, and the database user is `shopflow`.
+
+## dbt
+
+The dbt project is located in `dbt/shopflow/`.
+
+It includes staging models, intermediate transformations, analytical marts and data quality tests.
+
+Typical commands, executed from the directory containing `dbt_project.yml`:
+
+```powershell
+dbt debug
+dbt run
+dbt test
+dbt build
+```
+
+## Current Progress
+
+- [x] API and data ingestion
+- [x] Raw data storage in MinIO
+- [x] PostgreSQL schema and data loading
+- [x] dbt staging models
+- [x] Intermediate dbt models
+- [x] Analytical marts
+- [x] Initial dbt data quality tests
+- [x] Airflow workflow orchestration
+- [x] Airflow integration with the Windows environment via SSH
+- [x] Metabase analytics and BI dashboards
+- [ ] Continuous integration
 
 ## Security
 
-- Keep credentials and environment variables in local configuration files.
-- Never commit `.env`, private SSH keys, passwords, or production secrets.
-- Use `.env.example` as a template with placeholder values only.
-- Keep `profiles.yml` outside the repository when it contains credentials.
-- Use proper SSH host-key verification and managed secrets in production.
-- Replace development credentials before exposing services outside your local environment.
+- Store credentials and environment variables locally.
+- Never commit real secrets or `.env` files to version control.
+- Use `.env.example` as a template without real credentials.
+- Grant only the permissions required by each service.
 
-## Future Improvements
+## Project Goals
 
-- Build analytical marts for sales, products, customers, and order performance.
-- Expand dbt tests, documentation, and model lineage.
-- Improve Airflow failure handling, retries, alerts, and monitoring.
-- Add automated CI checks with GitHub Actions.
-- Containerize and standardize execution environments.
-- Prepare deployment configuration for a production environment.
+This project demonstrates practical data engineering skills across data ingestion, data lake storage, distributed processing, relational databases, analytics engineering, workflow orchestration, business intelligence, containerisation and data quality testing.
